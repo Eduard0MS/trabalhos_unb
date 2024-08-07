@@ -7,13 +7,13 @@ import time
 
 
 ### preencha seu email e senha aqui abaixo ###
-email = 'eduardomiuradasilva@gmail.com'
-senha = '1802Edu0#*#'
+email = 'seu-email-aqui'
+senha = 'suasenha'
 
 API = IQ_Option(email,senha)
 
 
-### FunÁ„o para conectar na IQOPTION ###
+### Fun√ß√£o para conectar na IQOPTION ###
 check, reason = API.connect()
 if check:
     print('Conectado com sucesso')
@@ -22,11 +22,11 @@ else:
         print('Email ou senha incorreta')
         
     else:
-        print('Houve um problema na conex„o')
+        print('Houve um problema na conex√£o')
 
         print(reason)
 
-### FunÁ„o para Selecionar demo ou real ###
+### Fun√ß√£o para Selecionar demo ou real ###
 while True:
     escolha = input('Selecione a conta em que deseja conectar: demo ou real  - ')
     if escolha == 'demo':
@@ -42,7 +42,7 @@ while True:
         
 API.change_balance(conta)
 
-### FunÁ„o abrir ordem e checar resultado ###
+### Fun√ß√£o abrir ordem e checar resultado ###
 def compra(ativo,valor,direcao,exp,tipo):
     if tipo == 'digital':
         check, id = API.buy_digital_spot_v2(ativo,valor,direcao,exp)
@@ -77,20 +77,20 @@ exp = 1
 tipo = 'digital'
 
 
-### chamada da funÁ„o de compra ###
+### chamada da fun√ß√£o de compra ###
 compra(ativo,valor,direcao,exp,tipo)
 
 
 
 
 
-### FunÁ„o para separar tipos de dados de uma ordem ###
+### Fun√ß√£o para separar tipos de dados de uma ordem ###
 def separar_dados(dados):
     dados = dados.split(';')
     dados = [float(i) for i in dados]
     return dados
 
-### FunÁ„o para pegar dados de uma ordem ###
+### Fun√ß√£o para pegar dados de uma ordem ###
 def pegar_dados_dig(id,tipo):
     if tipo == 'digital':
         dados = API.get_digital_spot_profit_after_sale(id)
@@ -104,7 +104,7 @@ def pegar_dados_bin(id,tipo):
         dados = API.get_option_profit_after_sale(id)
     return dados
 
-### FunÁ„o para tratamento de dados ###
+### Fun√ß√£o para tratamento de dados ###
 def tratamento_dados(dados):
     dados = dados.split(';')
     dados = [float(i) for i in dados]
